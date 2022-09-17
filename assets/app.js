@@ -43,13 +43,18 @@ const libros = [
 const busqueda = document.querySelector('#buscar');
 const peliculas_content = document.querySelector('.peliculas-content')
 const series_content = document.querySelector('.series-content')
+const container = document.querySelector('.container');
+const button = document.querySelector('#button');
 const filtrar = () => {
-    peliculas_content.innerHTML = ""
-    series_content.innerHTML = ""
-    let text = busqueda.value.toLowerCase()
+
+  peliculas_content.innerHTML = '';
+  series_content.innerHTML = ''; 
+
+    let texto = busqueda.value.toLowerCase()
+
     for (let pelicula of peliculas) {
-        let nombre = pelicula.name.toLowerCase();
-        if (nombre.indexOf(text) != -1) {
+        let nombreP = pelicula.name.toLowerCase();
+        if (nombreP.indexOf(texto) != -1) {
             peliculas_content.innerHTML +=
             ` <div class="peliculas">
                 <img src="${pelicula.img}" alt="">
@@ -59,9 +64,9 @@ const filtrar = () => {
     }
 
     for (let serie of series) {
-        let nombre = serie.name.toLowerCase();
-        if (nombre.indexOf(text) != -1) {
-            peliculas_content.innerHTML +=
+        let nombreS = serie.name.toLowerCase();
+        if (nombreS.indexOf(texto) != -1) {
+            series_content.innerHTML +=
             ` <div class="series">
                 <img src="${serie.img}" alt="">
                  <h3>${serie.name}</h3>   
@@ -79,4 +84,5 @@ const filtrar = () => {
     }
 }
 filtrar();
-busqueda.addEventListener("keyup" , filtrar())
+
+button.addEventListener("clik", filtrar())

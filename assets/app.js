@@ -40,11 +40,13 @@ const libros = [
     { name: '', img: '' },
 ];
 
+
 const busqueda = document.querySelector('#buscar');
 const peliculas_content = document.querySelector('.peliculas-content')
 const series_content = document.querySelector('.series-content')
 const container = document.querySelector('.container');
 const button = document.querySelector('#button');
+
 const filtrar = () => {
 
   peliculas_content.innerHTML = '';
@@ -54,7 +56,7 @@ const filtrar = () => {
 
     for (let pelicula of peliculas) {
         let nombreP = pelicula.name.toLowerCase();
-        if (nombreP.indexOf(texto) != -1) {
+        if (nombreP.indexOf(texto) !== -1) {
             peliculas_content.innerHTML +=
             ` <div class="peliculas">
                 <img src="${pelicula.img}" alt="">
@@ -65,7 +67,7 @@ const filtrar = () => {
 
     for (let serie of series) {
         let nombreS = serie.name.toLowerCase();
-        if (nombreS.indexOf(texto) != -1) {
+        if (nombreS.indexOf(texto) !== -1) {
             series_content.innerHTML +=
             ` <div class="series">
                 <img src="${serie.img}" alt="">
@@ -84,5 +86,4 @@ const filtrar = () => {
     }
 }
 filtrar();
-
-button.addEventListener("clik", filtrar())
+busqueda.addEventListener('keyup' , filtrar)
